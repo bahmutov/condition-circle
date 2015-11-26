@@ -23,7 +23,7 @@ to use this package to verify the environment to make sure we are running on
 [CircleCI](https://circleci.com).
 
 Create `circle.yml` file and add post test command. Make sure to ignore its output -
-if there is no new release to be published, the build is till ok.
+if there is no new release to be published, the build is still ok.
 
 ```yaml
 machine:
