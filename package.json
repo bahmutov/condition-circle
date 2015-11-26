@@ -1,8 +1,8 @@
 {
   "name": "condition-circle",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Checks CircleCI environment before publishing successful build using semantic-release",
-  "main": "src/conditions-circle.js",
+  "main": "src/condition-circle.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
