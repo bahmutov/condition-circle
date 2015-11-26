@@ -4,8 +4,8 @@
 There [are problems](https://github.com/semantic-release/cli/issues/69)
 currently with Travis CI due to DDoS attacks, and my favorite new process while working with NodeJS is
 [not working](https://github.com/semantic-release/semantic-release/issues/134).
-I would like to be able to use [CircleCI](https://circleci.com)
-- a very fast and intuitive continuous integration service, to unit
+I would like to be able to use [CircleCI](https://circleci.com);
+a very fast and intuitive continuous integration service, to unit
 test and publish new versions of my modules automatically using
 [semantic-release](https://github.com/semantic-release/semantic-release) service.
 
@@ -37,9 +37,9 @@ pick option "Other (print tokens)". You will see something like this
 
 Note: the setup step *removes the version property from your package.json*. To avoid constant
 NPM warnings, I follow Kent C. Dodds' [advice](https://egghead.io/lessons/javascript-how-to-write-a-javascript-library-automating-releases-with-semantic-release)
-and add back a placeholder property
+and add back a placeholder property in your `package.json` file
 
-```json package.json
+```json
 {
   "version": "0.0.0-semantic-release"
 }
