@@ -4,9 +4,12 @@
 
 Inspired by [condition-travis](https://github.com/semantic-release/condition-travis)
 
+[![Circle CI][ci-badge] ][ci-url]
 [![semantic-release][semantic-image] ][semantic-url]
 [![manpm](https://img.shields.io/badge/manpm-%E2%9C%93-3399ff.svg)](https://github.com/bahmutov/manpm)
 
+[ci-badge]: https://circleci.com/gh/bahmutov/condition-circle.svg?style=svg
+[ci-url]: https://circleci.com/gh/bahmutov/condition-circle
 [semantic-image]: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg
 [semantic-url]: https://github.com/semantic-release/semantic-release
 
