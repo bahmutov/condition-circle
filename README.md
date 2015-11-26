@@ -4,6 +4,48 @@
 
 Inspired by [condition-travis](https://github.com/semantic-release/condition-travis)
 
+[![manpm](https://img.shields.io/badge/manpm-%E2%9C%93-3399ff.svg)](https://github.com/bahmutov/manpm)
+
+## Install and configure
+
+    npm install --save-dev condition-circle
+
+Add the following to the `package.json`
+
+```json
+"release": {
+  "verifyConditions": "condition-circle"
+}
+```
+
+This tells [semantic-release plugins](https://github.com/semantic-release/semantic-release#plugins)
+to use this package to verify the environment to make sure we are running on
+[CircleCI](https://circleci.com).
+
+Create `circle.yml` file and add post test command. Make sure to ignore its output -
+if there is no new release to be published, the build is till ok.
+
+```yaml
+machine:
+  node:
+    version: "0.12"
+test:
+  override:
+    - npm test
+  post:
+    - npm run semantic-release || true
+```
+
+## Advanced
+
+If you want to see the log messages from this plugin when it verifies the environment,
+use the following command.
+
+```yaml
+post:
+  - npm run semantic-release || true
+```
+
 ### Small print
 
 Author: Gleb Bahmutov &copy; 2015
