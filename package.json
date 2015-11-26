@@ -1,6 +1,6 @@
 {
   "name": "condition-circle",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Checks CircleCI environment before publishing successful build using semantic-release",
   "main": "src/condition-circle.js",
   "scripts": {

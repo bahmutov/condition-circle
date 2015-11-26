@@ -7,10 +7,12 @@ module.exports = function conditionsCircle(pluginConfig, weather, cb) {
   log(options);
 
   function success() {
-    return cb(null;)
+    log('success');
+    return cb(null);
   }
 
   function failure(message) {
+    log('failure', message);
     return cb(new Error(message));
   }
 
