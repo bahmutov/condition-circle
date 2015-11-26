@@ -10,6 +10,9 @@ Inspired by [condition-travis](https://github.com/semantic-release/condition-tra
 [semantic-image]: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg
 [semantic-url]: https://github.com/semantic-release/semantic-release
 
+You can read the [step by step guide](HOW.md) guide to setting up semantic-release with
+CircleCI (not just configuring this plugin).
+
 ## Install and configure
 
     npm install --save-dev condition-circle
