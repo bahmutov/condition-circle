@@ -1,0 +1,27 @@
+{
+  "name": "condition-circle",
+  "version": "1.0.0",
+  "description": "Checks CircleCI environment before publishing successful build using semantic-release",
+  "main": "src/conditions-circle.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bahmutov/condition-circle.git"
+  },
+  "keywords": [
+    "semantic-release",
+    "publish",
+    "release",
+    "plugin",
+    "circle",
+    "circle-ci"
+  ],
+  "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bahmutov/condition-circle/issues"
+  },
+  "homepage": "https://github.com/bahmutov/condition-circle#readme"
+}
