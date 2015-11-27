@@ -53,7 +53,7 @@ use the following command.
 
 ```yaml
 post:
-  - npm run semantic-release || true
+  - DEBUG=condition npm run semantic-release || true
 ```
 
 ### Small print
