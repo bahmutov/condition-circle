@@ -56,6 +56,11 @@ post:
   - DEBUG=condition npm run semantic-release || true
 ```
 
+## Related
+
+* [condition-node-version](https://github.com/bahmutov/condition-node-version) is my
+  plugin for only releasing to NPM from specific Node version.
+
 ### Small print
 
 Author: Gleb Bahmutov &copy; 2015
