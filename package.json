@@ -5,10 +5,17 @@
   "version": "0.0.0-semantic-release",
   "scripts": {
     "test": "node .",
+    "size": "t=\"$(npm pack .)\"; wc -c \"${t}\"; tar tvf \"${t}\"; rm \"${t}\";",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
+  "files": [
+    "HOW.md",
+    "refs.sh",
+    "src"
+  ],
   "release": {
-    "verifyConditions": "."
+    "verifyConditions": ".",
+    "debug": true
   },
   "repository": {
     "type": "git",
@@ -29,6 +36,7 @@
   },
   "homepage": "https://github.com/bahmutov/condition-circle#readme",
   "dependencies": {
+    "cross-spawn": "4.0.0",
     "debug": "2.2.0"
   },
   "devDependencies": {

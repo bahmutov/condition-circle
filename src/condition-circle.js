@@ -1,4 +1,8 @@
+'use strict';
+
 var log = require('debug')('condition');
+var spawn = require('cross-spawn');
+var join = require('path').join;
 
 module.exports = function conditionCircle(pluginConfig, weather, cb) {
   var env = weather.env,
@@ -16,6 +20,9 @@ module.exports = function conditionCircle(pluginConfig, weather, cb) {
     return cb(new Error(message));
   }
 
+  var script = join(__dirname, '../refs.sh');
+  spawn.sync(script, [], { stdio: 'inherit' });
+
   if (env.CIRCLECI !== 'true') {
     return failure('Missing env.CIRCLECI');
   }
@@ -24,6 +31,5 @@ module.exports = function conditionCircle(pluginConfig, weather, cb) {
     return failure('CircleCi built branch ' + env.CIRCLE_BRANCH +
       ' and not the configured branch ' + options.branch);
   }
-
   return success();
 };
