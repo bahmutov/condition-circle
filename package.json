@@ -15,7 +15,7 @@
   ],
   "release": {
     "verifyConditions": ".",
-    "debug": true
+    "debug": false
   },
   "repository": {
     "type": "git",
