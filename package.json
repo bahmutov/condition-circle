@@ -8,7 +8,8 @@
     "size": "t=\"$(npm pack .)\"; wc -c \"${t}\"; tar tvf \"${t}\"; rm \"${t}\";",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
     "lint": "standard --verbose --fix src/*.js",
-    "pretest": "npm run lint"
+    "pretest": "npm run lint",
+    "test-self": "CIRCLECI=true CIRCLE_BRANCH=master DEBUG=condition npm_config_loglevel=verbose npm run semantic-release"
   },
   "files": [
     "HOW.md",
@@ -17,7 +18,7 @@
   ],
   "release": {
     "verifyConditions": ".",
-    "debug": true
+    "debug": false
   },
   "repository": {
     "type": "git",
