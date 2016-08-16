@@ -6,7 +6,9 @@
   "scripts": {
     "test": "node .",
     "size": "t=\"$(npm pack .)\"; wc -c \"${t}\"; tar tvf \"${t}\"; rm \"${t}\";",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "lint": "standard --verbose --fix src/*.js",
+    "pretest": "npm run lint"
   },
   "files": [
     "HOW.md",
@@ -15,7 +17,7 @@
   ],
   "release": {
     "verifyConditions": ".",
-    "debug": false
+    "debug": true
   },
   "repository": {
     "type": "git",
@@ -40,6 +42,7 @@
     "debug": "2.2.0"
   },
   "devDependencies": {
-    "semantic-release": "4.3.5"
+    "semantic-release": "6.3.0",
+    "standard": "7.1.2"
   }
 }

@@ -64,6 +64,18 @@ If you want to see all messages from the semantic-release module as it runs,
 set the environment variable `npm_config_loglevel=verbose` because semantic release
 uses NPM logger module.
 
+## Advanced debug
+
+To try running this module from the command line without releasing anything
+
+1. Edit `package.json`, set `release.debug` flag to `true`
+2. Execute command
+
+```sh
+CIRCLECI=true CIRCLE_BRANCH=master DEBUG=condition \
+  npm_config_loglevel=verbose npm run semantic-release
+```
+
 ## Related
 
 * [condition-node-version](https://github.com/bahmutov/condition-node-version) is my

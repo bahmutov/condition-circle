@@ -1,35 +1,37 @@
-'use strict';
+'use strict'
 
-var log = require('debug')('condition');
-var spawn = require('cross-spawn');
-var join = require('path').join;
+var log = require('debug')('condition')
+var spawn = require('cross-spawn')
+var join = require('path').join
 
-module.exports = function conditionCircle(pluginConfig, weather, cb) {
-  var env = weather.env,
-    options = weather.options;
-  log('verifying conditions on circle');
-  log(options);
+module.exports = function conditionCircle (pluginConfig, weather, cb) {
+  var env = weather.env
+  var options = weather.options
+  log('verifying conditions on circle')
+  log('need environment variables CIRCLECI and CIRCLE_BRANCH')
+  log(options)
 
-  function success() {
-    log('success');
-    return cb(null);
+  function success () {
+    log('success')
+    return cb(null)
   }
 
-  function failure(message) {
-    log('failure', message);
-    return cb(new Error(message));
+  function failure (message) {
+    log('failure', message)
+    return cb(new Error(message))
   }
 
-  var script = join(__dirname, '../refs.sh');
-  spawn.sync(script, [], { stdio: 'inherit' });
+  var script = join(__dirname, '../refs.sh')
+  spawn.sync(script, [], { stdio: 'inherit' })
 
   if (env.CIRCLECI !== 'true') {
-    return failure('Missing env.CIRCLECI');
+    return failure('Missing env.CIRCLECI variable')
   }
 
   if (options.branch !== env.CIRCLE_BRANCH) {
-    return failure('CircleCi built branch ' + env.CIRCLE_BRANCH +
-      ' and not the configured branch ' + options.branch);
+    const msg = `CircleCi built branch ${env.CIRCLE_BRANCH}
+      does not match the configured publish branch ${options.branch}`
+    return failure(msg)
   }
-  return success();
-};
+  return success()
+}
