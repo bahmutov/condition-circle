@@ -40,7 +40,8 @@
   "homepage": "https://github.com/bahmutov/condition-circle#readme",
   "dependencies": {
     "cross-spawn": "4.0.0",
-    "debug": "2.2.0"
+    "debug": "2.2.0",
+    "safe-env": "1.2.0"
   },
   "devDependencies": {
     "semantic-release": "6.3.0",
