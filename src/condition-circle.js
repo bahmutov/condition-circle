@@ -3,7 +3,7 @@
 var log = require('debug')('condition')
 var spawn = require('cross-spawn')
 var join = require('path').join
-var safeEnv = require('save-env')
+var safeEnv = require('safe-env')
 
 function isToken (key) {
   return key.toLowerCase().indexOf('token') !== -1
