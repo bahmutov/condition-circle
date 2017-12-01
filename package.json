@@ -2,7 +2,7 @@
   "name": "condition-circle",
   "description": "Checks CircleCI environment before publishing successful build using semantic-release",
   "main": "src/condition-circle.js",
-  "version": "0.0.0-semantic-release",
+  "version": "0.0.0-development",
   "scripts": {
     "test": "node .",
     "size": "t=\"$(npm pack .)\"; wc -c \"${t}\"; tar tvf \"${t}\"; rm \"${t}\";",
@@ -48,7 +48,7 @@
   },
   "devDependencies": {
     "pre-git": "3.16.0",
-    "semantic-release": "8.2.3",
+    "semantic-release": "^8.2.0",
     "standard": "10.0.3"
   },
   "config": {
