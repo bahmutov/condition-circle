@@ -48,7 +48,7 @@
   "devDependencies": {
     "pre-git": "3.10.0",
     "semantic-release": "11.0.1",
-    "standard": "7.1.2"
+    "standard": "10.0.3"
   },
   "config": {
     "pre-git": {
