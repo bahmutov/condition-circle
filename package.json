@@ -42,11 +42,12 @@
   "dependencies": {
     "cross-spawn": "4.0.0",
     "debug": "2.2.0",
-    "safe-env": "1.2.0"
+    "safe-env": "1.2.0",
+    "@semantic-release/error": "2.1.0"
   },
   "devDependencies": {
     "pre-git": "3.10.0",
-    "semantic-release": "6.3.0",
+    "semantic-release": "11.0.1",
     "standard": "7.1.2"
   },
   "config": {

@@ -1,42 +1,31 @@
 'use strict'
 
-var log = require('debug')('condition')
-var spawn = require('cross-spawn')
-var join = require('path').join
-var safeEnv = require('safe-env')
+const log = require('debug')('condition')
+const spawn = require('cross-spawn')
+const join = require('path').join
+const safeEnv = require('safe-env')
+const SemanticReleaseError = require('@semantic-release/error')
 
-function isToken (key) {
+const isToken = (key) {
   return key.toLowerCase().indexOf('token') !== -1
 }
 
-module.exports = function conditionCircle (pluginConfig, weather, cb) {
-  var env = weather.env
-  var options = weather.options
+module.exports = async (pluginConfig, { options: { branch } }) => {
   log('verifying conditions on circle')
   log('need environment variables CIRCLECI and CIRCLE_BRANCH')
   log(safeEnv(isToken, options))
 
-  function success () {
-    log('success')
-    return cb(null)
-  }
-
-  function failure (message) {
-    log('failure', message)
-    return cb(new Error(message))
-  }
-
-  var script = join(__dirname, '../refs.sh')
+  const script = join(__dirname, '../refs.sh')
   spawn.sync(script, [], { stdio: 'inherit' })
-
-  if (env.CIRCLECI !== 'true') {
-    return failure('Missing env.CIRCLECI variable')
+  
+  if (process.env.CIRCLECI !== 'true') {
+    throw new SemanticReleaseError('Not running on Circle CI');
   }
-
-  if (options.branch !== env.CIRCLE_BRANCH) {
-    const msg = `CircleCi built branch ${env.CIRCLE_BRANCH}
-      does not match the configured publish branch ${options.branch}`
-    return failure(msg)
+  
+  const envBranch = process.env.CIRCLE_BRANCH;
+  if (branch !== envBranch) {
+    throw new SemanticReleaseError(
+      `CircleCI using '${envBranch}' not configured publish branch (${branch})`
+    );
   }
-  return success()
-}
+})
