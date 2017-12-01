@@ -19,7 +19,8 @@
   ],
   "release": {
     "verifyConditions": ".",
-    "debug": false
+    "debug": false,
+    "analyzeCommits": "simple-commit-message"
   },
   "repository": {
     "type": "git",
@@ -40,21 +41,25 @@
   },
   "homepage": "https://github.com/bahmutov/condition-circle#readme",
   "dependencies": {
-    "cross-spawn": "4.0.0",
-    "debug": "2.2.0",
-    "safe-env": "1.2.0",
-    "@semantic-release/error": "2.1.0"
+    "@semantic-release/error": "2.1.0",
+    "cross-spawn": "5.1.0",
+    "debug": "3.1.0",
+    "safe-env": "1.2.0"
   },
   "devDependencies": {
-    "pre-git": "3.10.0",
+    "pre-git": "3.16.0",
     "semantic-release": "11.0.1",
     "standard": "10.0.3"
   },
   "config": {
     "pre-git": {
       "commit-msg": "simple",
-      "pre-commit": ["npm test"],
-      "pre-push": ["npm run size"],
+      "pre-commit": [
+        "npm test"
+      ],
+      "pre-push": [
+        "npm run size"
+      ],
       "post-commit": [],
       "post-checkout": [],
       "post-merge": []
