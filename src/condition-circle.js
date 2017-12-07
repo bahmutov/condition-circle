@@ -21,7 +21,7 @@ async function conditionCircle (pluginConfig, args) {
   const script = join(__dirname, '../refs.sh')
   spawn.sync(script, [], { stdio: 'inherit' })
 
-  if (process.env.CIRCLECI !== 'true') {
+  if (!process.env.CIRCLECI) {
     throw new SemanticReleaseError('Not running on Circle CI')
   }
 
