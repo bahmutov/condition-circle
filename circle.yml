@@ -6,4 +6,4 @@ test:
     - npm test
   post:
     - ./refs.sh || true
-    - DEBUG=condition npm run semantic-release || true
+    - DEBUG=condition npx semantic-release || true
