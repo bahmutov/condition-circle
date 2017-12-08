@@ -8,7 +8,7 @@
     "size": "t=\"$(npm pack .)\"; wc -c \"${t}\"; tar tvf \"${t}\"; rm \"${t}\";",
     "lint": "standard --verbose --fix src/*.js",
     "pretest": "npm run lint",
-    "test-self": "CIRCLECI=true CIRCLE_BRANCH=master DEBUG=condition npm_config_loglevel=verbose npx semantic-release",
+    "test-self": "CIRCLECI=true CIRCLE_BRANCH=master DEBUG=condition npm_config_loglevel=verbose npx semantic-release --verify-conditions='./src/condition-circle.js'",
     "commit": "commit-wizard"
   },
   "files": [
@@ -17,9 +17,13 @@
     "src"
   ],
   "release": {
-    "verifyConditions": ".",
     "debug": false,
-    "analyzeCommits": "simple-commit-message"
+    "analyzeCommits": "simple-commit-message",    
+    "verifyConditions": [
+      "./src/condition-circle.js",
+      "@semantic-release/npm", 
+      "@semantic-release/github"
+    ]
   },
   "repository": {
     "type": "git",
