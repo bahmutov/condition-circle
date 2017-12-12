@@ -10,7 +10,7 @@ const isToken = (key) => {
   return key.toLowerCase().indexOf('token') !== -1
 }
 
-async function conditionCircle (pluginConfig, args) {
+function conditionCircle (pluginConfig, args) {
   const options = args.options
   const branch = options.branch
 
