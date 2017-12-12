@@ -42,7 +42,7 @@ if there is no new release to be published, the build is still ok.
 ```yaml
 machine:
   node:
-    version: "0.12"
+    version: "8"
 test:
   override:
     - npm test
