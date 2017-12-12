@@ -43,6 +43,9 @@
     "url": "https://github.com/bahmutov/condition-circle/issues"
   },
   "homepage": "https://github.com/bahmutov/condition-circle#readme",
+  "peerDependencies": {
+    "semantic-release": "^11.0.0"
+  },
   "dependencies": {
     "@semantic-release/error": "2.1.0",
     "cross-spawn": "5.1.0",
@@ -51,7 +54,7 @@
   },
   "devDependencies": {
     "pre-git": "3.16.0",
-    "semantic-release": "11.0.1",
+    "semantic-release": "^11.0.0",
     "standard": "10.0.3"
   },
   "config": {
