@@ -18,7 +18,7 @@
   ],
   "release": {
     "debug": false,
-    "analyzeCommits": "simple-commit-message",    
+    "analyzeCommits": "./simple-commit-message.js",    
     "verifyConditions": [
       "./src/condition-circle.js",
       "@semantic-release/npm", 
