@@ -6,4 +6,7 @@ test:
     - npm test
   post:
     - ./refs.sh || true
+    # try to get around a crash
+    # https://github.com/bahmutov/condition-circle/issues/6#issuecomment-351542333
+    - npm i semantic-release@11.0.2
     - DEBUG=condition npx semantic-release || true
