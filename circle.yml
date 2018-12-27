@@ -1,12 +1,36 @@
-machine:
-  node:
-    version: "8"
-test:
-  override:
-    - npm test
-  post:
-    - ./refs.sh || true
-    # try to get around a crash
-    # https://github.com/bahmutov/condition-circle/issues/6#issuecomment-351542333
-    - npm i semantic-release@11.0.2
-    - DEBUG=condition npx semantic-release || true
+version: 2
+jobs:
+  build:
+    working_directory: ~/repo
+    docker:
+      - image: circleci/node:10
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: install-npm-wee
+          command: npm install
+      # try to get around a crash
+      # https://github.com/bahmutov/condition-circle/issues/6#issuecomment-351542333
+      - run: npm i semantic-release@11.0.2
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+      - run: npm test
+      - run: ./refs.sh || true
+      - run: DEBUG=condition npx semantic-release || true
+
+# machine:
+#   node:
+#     version: "8"
+# test:
+#   override:
+#     - npm test
+#   post:
+#     - ./refs.sh || true
+#     # try to get around a crash
+#     # https://github.com/bahmutov/condition-circle/issues/6#issuecomment-351542333
+#     - npm i semantic-release@11.0.2
+#     - DEBUG=condition npx semantic-release || true
