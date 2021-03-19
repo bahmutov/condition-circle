@@ -12,7 +12,7 @@ const isToken = (key) => {
 
 async function conditionCircle (pluginConfig, args) {
   const options = args.options
-  const branch = options.branch
+  const { branches } = options
 
   log('verifying conditions on circle')
   log('need environment variables CIRCLECI and CIRCLE_BRANCH')
@@ -26,9 +26,14 @@ async function conditionCircle (pluginConfig, args) {
   }
 
   const envBranch = process.env.CIRCLE_BRANCH
-  if (branch !== envBranch) {
+
+  const isValidReleaseBranch = branches.some(({ name }) => name === envBranch)
+
+  if (!isValidReleaseBranch) {
     throw new SemanticReleaseError(
-      `CircleCI using '${envBranch}' not configured publish branch (${branch})`
+      `CircleCI cannot publish branch "${envBranch}". Valid branches are: "${branches
+        .map(({ name }) => name)
+        .join('"')}"`
     )
   }
 }
