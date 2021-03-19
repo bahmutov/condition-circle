@@ -12,10 +12,12 @@ const isToken = (key) => {
 
 async function conditionCircle (pluginConfig, args) {
   const options = args.options
-  const { branches } = options
+  const { branch } = options
 
+  const branches = Array.isArray(branch) ? branch : [branch]
   log('verifying conditions on circle')
   log('need environment variables CIRCLECI and CIRCLE_BRANCH')
+  log('branches %o', branches)
   log(safeEnv(isToken, options))
 
   const script = join(__dirname, '../refs.sh')

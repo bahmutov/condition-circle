@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/repo
     docker:
-      - image: circleci/node:10
+      - image: circleci/node:12
     steps:
       - checkout
       - restore_cache:
@@ -11,9 +11,6 @@ jobs:
       - run:
           name: install-npm-wee
           command: npm install
-      # try to get around a crash
-      # https://github.com/bahmutov/condition-circle/issues/6#issuecomment-351542333
-      - run: npm i semantic-release@11.0.2
       - save_cache:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
